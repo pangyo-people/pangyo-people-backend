@@ -9,10 +9,10 @@ logging:
               BasicBinder: TRACE
 spring:
   datasource:
-    url: jdbc:mysql://${rds.hostname}:${rds.port}/${rds.dbname}?serverTimezone=Asia/Seoul
-    username: ${rds.username}
-    password: ${rds.password}
-    driver-class-name: ${rds.driver}
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pangyopeople?serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
   devtools:
     livereload:
       enabled: true
