@@ -1,8 +1,12 @@
 package com.pangyopeoplebackend.event;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -11,40 +15,37 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Getter
+@EntityListeners(AuditingEntityListener.class)
 public class Event {
     @Id
-    private String event_id;
+    private String eventId = UUID.randomUUID().toString();
 
     @Column(nullable = false)
-    private String event_name;
+    private String eventName;
 
     @Column
-    private String event_category;
-
-    //@Column
-    //@Convert(converter = Category.CategoryConverter.class // enum으로 수정 필요
-    //private Category category;
+    private String eventCategory;
 
     @Column
     private String host;
 
     @Column
-    private String event_date;
+    private String eventDate;
 
     @Column
-    private String event_url;
+    private String eventUrl;
 
     @Column
-    private boolean event_permission;
+    private boolean eventPermission;
 
     @Column
-    private String event_created; // 만든 날짜로 수정
-
+    @CreatedDate
+    private LocalDateTime eventCreated;
 
     @PrePersist
     public void prePersist() {
-        if (event_id == null) {
-            event_id = UUID.randomUUID().toString();
+        if (eventId == null) {
+            eventId = UUID.randomUUID().toString();
         }
     }
 }

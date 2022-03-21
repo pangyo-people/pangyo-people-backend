@@ -1,11 +1,12 @@
 package com.pangyopeoplebackend.organization;
 
+import com.pangyopeoplebackend.domain.OrgCategory;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -14,37 +15,36 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Getter
+@EntityListeners(AuditingEntityListener.class)
 public class Organization {
     @Id
-    private String org_id;
+    private String orgId = UUID.randomUUID().toString();
 
     @Column(nullable = false)
-    private String org_name;
+    private String orgName;
 
     @Column
-    private String org_category;
-
-    //@Column
-    //@Convert(converter = Category.CategoryConverter.class // enum으로 수정 필요
-    //private Category category;
+    @Convert(converter = OrgCategory.CategoryConverter.class)
+    private OrgCategory orgCategory;
 
     @Column
-    private String org_description;
+    private String orgDescription;
 
     @Column
-    private String org_url;
+    private String orgUrl;
 
     @Column
-    private boolean org_permission;
+    private boolean orgPermission;
 
     @Column
-    private String org_created; // 만든 날짜로 수정
+    @CreatedDate
+    private LocalDateTime orgCreated;
 
 
     @PrePersist
     public void prePersist() {
-        if (org_id == null) {
-            org_id = UUID.randomUUID().toString();
+        if (orgId == null) {
+            orgId = UUID.randomUUID().toString();
         }
     }
 }
