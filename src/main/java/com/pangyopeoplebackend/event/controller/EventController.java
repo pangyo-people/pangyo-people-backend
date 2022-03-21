@@ -18,7 +18,7 @@ public class EventController {
     private final EventService eventService;
 
     @GetMapping(path = "/v1/api/events")
-    public List<Event> getProduct(){
+    public List<Event> getEvents(){
         return eventService.getEvents();
     }
 
