@@ -18,35 +18,34 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Event {
     @Id
-    private String event_id = UUID.randomUUID().toString();
+    private String eventId = UUID.randomUUID().toString();
 
     @Column(nullable = false)
-    private String event_name;
+    private String eventName;
 
     @Column
-    private String event_category;
+    private String eventCategory;
 
     @Column
     private String host;
 
     @Column
-    private String event_date;
+    private String eventDate;
 
     @Column
-    private String event_url;
+    private String eventUrl;
 
     @Column
-    private boolean event_permission;
+    private boolean eventPermission;
 
     @Column
     @CreatedDate
-    private LocalDateTime event_created;
-
+    private LocalDateTime eventCreated;
 
     @PrePersist
     public void prePersist() {
-        if (event_id == null) {
-            event_id = UUID.randomUUID().toString();
+        if (eventId == null) {
+            eventId = UUID.randomUUID().toString();
         }
     }
 }

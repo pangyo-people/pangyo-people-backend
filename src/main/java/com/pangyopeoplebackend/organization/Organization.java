@@ -18,33 +18,33 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Organization {
     @Id
-    private String org_id = UUID.randomUUID().toString();
+    private String orgId = UUID.randomUUID().toString();
 
     @Column(nullable = false)
-    private String org_name;
+    private String orgName;
 
     @Column
     @Convert(converter = OrgCategory.CategoryConverter.class)
-    private OrgCategory org_category;
+    private OrgCategory orgCategory;
 
     @Column
-    private String org_description;
+    private String orgDescription;
 
     @Column
-    private String org_url;
+    private String orgUrl;
 
     @Column
-    private boolean org_permission;
+    private boolean orgPermission;
 
     @Column
     @CreatedDate
-    private LocalDateTime org_created;
+    private LocalDateTime orgCreated;
 
 
     @PrePersist
     public void prePersist() {
-        if (org_id == null) {
-            org_id = UUID.randomUUID().toString();
+        if (orgId == null) {
+            orgId = UUID.randomUUID().toString();
         }
     }
 }
