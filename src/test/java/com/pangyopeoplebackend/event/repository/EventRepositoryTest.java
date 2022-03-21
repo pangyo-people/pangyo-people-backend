@@ -20,17 +20,17 @@ public class EventRepositoryTest {
     void saveTest() throws Throwable{
 
         Event event = Event.builder()
-                .event_name("name")
-                .event_category("category")
+                .eventName("name")
+                .eventCategory("category")
                 .host("host")
-                .event_date("date")
-                .event_url("url")
-                .event_permission(true)
+                .eventDate("date")
+                .eventUrl("url")
+                .eventPermission(true)
                 .build();
 
         event = eventRepository.save(event);
 
-        assertNotNull(event.getEvent_id());
+        assertNotNull(event.getEventId());
 
     }
 }
