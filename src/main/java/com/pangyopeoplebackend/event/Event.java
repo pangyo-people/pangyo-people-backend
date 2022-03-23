@@ -1,5 +1,7 @@
 package com.pangyopeoplebackend.event;
 
+import com.pangyopeoplebackend.domain.EventCategory;
+import com.pangyopeoplebackend.domain.OrgCategory;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -24,7 +26,8 @@ public class Event {
     private String eventName;
 
     @Column
-    private String eventCategory;
+    @Convert(converter = EventCategory.CategoryConverter.class)
+    private EventCategory eventCategory;
 
     @Column
     private String host;
