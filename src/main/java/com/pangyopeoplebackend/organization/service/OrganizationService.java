@@ -4,6 +4,7 @@ import com.pangyopeoplebackend.domain.OrgCategory;
 import com.pangyopeoplebackend.organization.Organization;
 import com.pangyopeoplebackend.organization.repository.OrganizationRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public class OrganizationService {
     }
 
     public List<Organization> getOrganizationsByOrgCategory(OrgCategory orgCategory) {
-        return organizationRepository.findByOrgCategory(orgCategory);
+        return organizationRepository.findByOrgCategoryOrderByOrgName(orgCategory);
     }
 }

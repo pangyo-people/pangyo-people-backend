@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface OrganizationRepository extends JpaRepository<Organization, String>{
 
-    List<Organization> findByOrgCategory(OrgCategory orgCategory);
+    List<Organization> findByOrgCategoryOrderByOrgName(OrgCategory orgCategory);
 }
