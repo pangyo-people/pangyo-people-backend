@@ -1,0 +1,12 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+      "Name": "963897741994.dkr.ecr.ap-northeast-1.amazonaws.com/ecr-pgpp-prod-restapi-tokyo-001:latest",
+      "Update": "true"
+    },
+    "Ports": [
+      {
+        "ContainerPort": "8080"
+      }
+    ]
+  }

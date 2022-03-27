@@ -1,8 +1,8 @@
-name: build and deploy(dev)
+name: build and deploy(prod)
 
 on:
   push:
-    branches: [ develop-deploy ]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -41,7 +41,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ecr_pgpp_dev_restapi_tokyo_001
+          ECR_REPOSITORY: ecr-pgpp-prod-restapi-tokyo-001
           IMAGE_TAG: latest
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -58,7 +58,7 @@ jobs:
         run: |
           mkdir -p deploy
           cp -r .ebextensions deploy/.ebextensions
-          cp Dockerrun-dev.aws.json deploy/Dockerrun.aws.json
+          cp Dockerrun-prod.aws.json deploy/Dockerrun.aws.json
           cd deploy && zip -r deploy.zip .
           
       - name: Beanstalk Deploy
@@ -66,9 +66,9 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: ${{secrets.DEV_EB_APP_NAME}}
-          environment_name: ${{secrets.DEV_EB_ENV_NAME}}
-          version_label: ${{secrets.DEV_EB_ENV_NAME}}-${{steps.current-time.outputs.formattedTime}}
+          application_name: ${{secrets.PROD_EB_APP_NAME}}
+          environment_name: ${{secrets.PROD_EB_ENV_NAME}}
+          version_label: ${{secrets.PROD_EB_ENV_NAME}}-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-1
           deployment_package: deploy/deploy.zip
           wait_for_environment_recovery: 200
