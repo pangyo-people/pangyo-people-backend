@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -22,4 +24,8 @@ public class EventController {
         return eventService.getEvents();
     }
 
+    @GetMapping("/devqwerty-restapi.pgpp.co.kr")
+    public void getApiDocs(HttpServletResponse httpServletResponse) throws IOException {
+            httpServletResponse.sendRedirect("/swagger-ui/index.html?url=/v3/api-docs");
+    }
 }
