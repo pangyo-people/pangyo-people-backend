@@ -1,5 +1,6 @@
 package com.pangyopeoplebackend.event.service;
 
+import com.pangyopeoplebackend.domain.EventCategory;
 import com.pangyopeoplebackend.event.Event;
 import com.pangyopeoplebackend.event.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,5 +18,9 @@ public class EventService {
 
     public List<Event> getEvents() {
         return eventRepository.findAll(Sort.by(Sort.Direction.DESC, "eventDate"));
+    }
+
+    public List<Event> getEventsByCategory(EventCategory eventCategory) {
+        return eventRepository.findByEventCategoryOrderByEventDateDesc(eventCategory);
     }
 }
