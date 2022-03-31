@@ -32,9 +32,4 @@ public class EventController {
     public List<Event> getEventsCategory(@PathVariable("number") EventCategory eventCategory) {
         return eventService.getEventsByCategory(eventCategory);
     }
-
-    @GetMapping("/")
-    public void getApiDocs(HttpServletResponse httpServletResponse) throws IOException {
-            httpServletResponse.sendRedirect("/swagger-ui/index.html?url=/v3/api-docs");
-    }
 }

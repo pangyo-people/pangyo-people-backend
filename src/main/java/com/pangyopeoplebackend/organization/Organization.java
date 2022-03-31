@@ -33,13 +33,12 @@ public class Organization {
     @Column
     private String orgUrl;
 
-    @Column
+    @Column(columnDefinition = "boolean default false")
     private boolean orgPermission;
 
     @Column
     @CreatedDate
     private LocalDateTime orgCreated;
-
 
     @PrePersist
     public void prePersist() {

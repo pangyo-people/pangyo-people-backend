@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -20,5 +21,10 @@ public class OrganizationService {
 
     public List<Organization> getOrganizationsByOrgCategory(OrgCategory orgCategory) {
         return organizationRepository.findByOrgCategoryOrderByOrgName(orgCategory);
+    }
+
+    @Transactional
+    public Organization saveOrg(Organization organization) {
+        return organizationRepository.save(organization);
     }
 }
