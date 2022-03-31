@@ -38,7 +38,7 @@ public class Event {
     @Column
     private String eventUrl;
 
-    @Column
+    @Column(columnDefinition = "boolean default false")
     private boolean eventPermission;
 
     @Column
