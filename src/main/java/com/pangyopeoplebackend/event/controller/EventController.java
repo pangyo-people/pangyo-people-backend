@@ -7,10 +7,7 @@ import com.pangyopeoplebackend.event.service.EventService;
 import com.pangyopeoplebackend.organization.Organization;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -32,5 +29,10 @@ public class EventController {
     @GetMapping("/v1/api/events/category/{number}")
     public List<Event> getEventsByCategory(@PathVariable int number) {
         return eventService.getEventsByCategory(number);
+    }
+
+    @PostMapping("/v1/api/events/write")
+    public Event saveOrg(@RequestBody Event event) {
+        return eventService.saveEvent(event);
     }
 }

@@ -25,24 +25,22 @@ public class Event {
     @Column(nullable = false)
     private String eventName;
 
-
-    /*@Convert(converter = EventCategory.CategoryConverter.class)*/
-    @Column
+    @Column(nullable = false)
     private int eventCategory;
 
-    @Column
+    @Column(nullable = false)
     private String host;
 
-    @Column
+    @Column(nullable = false)
     private String eventDate;
 
-    @Column
+    @Column(nullable = false)
     private String eventUrl;
 
-    @Column(columnDefinition = "boolean default false")
+    @Column(nullable = false)
     private boolean eventPermission;
 
-    @Column
+    @Column(nullable = false)
     @CreatedDate
     private LocalDateTime eventCreated;
 
