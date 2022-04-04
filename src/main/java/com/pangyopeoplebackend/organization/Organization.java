@@ -23,20 +23,20 @@ public class Organization {
     @Column(nullable = false)
     private String orgName;
 
-    @Column
+    @Column(nullable = false)
     @Convert(converter = OrgCategory.CategoryConverter.class)
     private OrgCategory orgCategory;
 
     @Column
     private String orgDescription;
 
-    @Column
+    @Column(nullable = false)
     private String orgUrl;
 
-    @Column(columnDefinition = "boolean default false")
+    @Column(nullable = false)
     private boolean orgPermission;
 
-    @Column
+    @Column(nullable = false)
     @CreatedDate
     private LocalDateTime orgCreated;
 
