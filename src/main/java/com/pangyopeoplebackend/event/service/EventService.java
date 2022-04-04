@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -22,5 +23,10 @@ public class EventService {
 
     public List<Event> getEventsByCategory(int eventCategory) {
         return eventRepository.findByEventCategoryOrderByEventDateDesc(eventCategory);
+    }
+
+    @Transactional
+    public Event saveEvent(Event event) {
+        return eventRepository.save(event);
     }
 }
