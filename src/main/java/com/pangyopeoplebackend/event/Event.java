@@ -25,9 +25,10 @@ public class Event {
     @Column(nullable = false)
     private String eventName;
 
+
+    /*@Convert(converter = EventCategory.CategoryConverter.class)*/
     @Column
-    @Convert(converter = EventCategory.CategoryConverter.class)
-    private EventCategory eventCategory;
+    private int eventCategory;
 
     @Column
     private String host;

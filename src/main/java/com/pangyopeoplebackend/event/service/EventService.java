@@ -20,7 +20,7 @@ public class EventService {
         return eventRepository.findAll(Sort.by(Sort.Direction.DESC, "eventDate"));
     }
 
-    public List<Event> getEventsByCategory(EventCategory eventCategory) {
+    public List<Event> getEventsByCategory(int eventCategory) {
         return eventRepository.findByEventCategoryOrderByEventDateDesc(eventCategory);
     }
 }

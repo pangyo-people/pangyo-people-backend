@@ -31,6 +31,6 @@ public class EventController {
 
     @GetMapping("/v1/api/events/category/{number}")
     public List<Event> getEventsByCategory(@PathVariable int number) {
-        return eventService.getEventsByCategory(EventCategory.valueOf(number));
+        return eventService.getEventsByCategory(number);
     }
 }
