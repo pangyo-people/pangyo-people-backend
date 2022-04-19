@@ -20,16 +20,16 @@ public class OrganizationController {
         return organizationService.getOrganizationsByOrgCategory(orgCategory);
     }
 
-    @GetMapping(path = "/v1/api/orgs")
+    @GetMapping(path = "/v1/api/admin/orgs")
     public List<Organization> getOrganizations(){
         return organizationService.getOrganizations();
     }
 
-    @PutMapping("/v1/api/org/{id}")
+    @PutMapping("/v1/api/admin/orgs/{id}")
     public Optional<Organization> updateOrganization(@PathVariable String id, @RequestBody Organization organization){
         return organizationService.updateOrganization(id, organization);
     }
-    @DeleteMapping("/v1/api/org/{id}")
+    @DeleteMapping("/v1/api/admin/orgs/{id}")
     public Organization deleteOrganization(@PathVariable String id){
         return organizationService.deleteOrganization(id);
     }
