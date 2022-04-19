@@ -1,13 +1,10 @@
 package com.pangyopeoplebackend.event;
 
-import com.pangyopeoplebackend.domain.EventCategory;
-import com.pangyopeoplebackend.domain.OrgCategory;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -24,9 +21,6 @@ public class Event {
 
     @Column(nullable = false)
     private String eventName;
-
-    @Column(nullable = false)
-    private int eventCategory;
 
     @Column(nullable = false)
     private String host;
