@@ -15,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Getter
+@Setter
 @EntityListeners(AuditingEntityListener.class)
 public class Organization {
     @Id
