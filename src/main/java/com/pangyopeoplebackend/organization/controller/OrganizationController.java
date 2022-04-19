@@ -26,8 +26,8 @@ public class OrganizationController {
     }
 
     @PutMapping("/v1/api/admin/orgs/{id}")
-    public Optional<Organization> updateOrganization(@PathVariable String id, @RequestBody Organization organization){
-        return organizationService.updateOrganization(id, organization);
+    public Optional<Organization> updateOrganization(@PathVariable String id){
+        return organizationService.updateOrganization(id);
     }
     @DeleteMapping("/v1/api/admin/orgs/{id}")
     public Organization deleteOrganization(@PathVariable String id){

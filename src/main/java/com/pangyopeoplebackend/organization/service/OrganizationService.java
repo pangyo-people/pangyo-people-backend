@@ -29,19 +29,11 @@ public class OrganizationService {
     }
 
     @Transactional
-    public Optional<Organization> updateOrganization(String id, Organization organization) {
+    public Optional<Organization> updateOrganization(String id) {
         Optional<Organization> updateOrganization = organizationRepository.findById(id);
 
         updateOrganization.ifPresent(selectOrganization->{
-            if(organization.getOrgName()!=null)
-                selectOrganization.setOrgName(organization.getOrgName());
-            if(organization.getOrgDescription()!=null)
-                selectOrganization.setOrgDescription(organization.getOrgDescription());
-            if(organization.getOrgUrl()!=null)
-                selectOrganization.setOrgUrl(organization.getOrgUrl());
-            if(organization.getOrgCategory()!=null)
-                selectOrganization.setOrgCategory(organization.getOrgCategory());
-
+            selectOrganization.setOrgPermission(true);
             organizationRepository.save(selectOrganization);
         });
         return updateOrganization;
