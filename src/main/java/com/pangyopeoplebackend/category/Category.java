@@ -1,4 +1,4 @@
-package com.pangyopeoplebackend.event;
+package com.pangyopeoplebackend.category;
 
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

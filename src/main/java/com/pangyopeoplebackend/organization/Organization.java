@@ -19,6 +19,7 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Organization {
     @Id
+    @Builder.Default
     private String orgId = UUID.randomUUID().toString();
 
     @Column(nullable = false)

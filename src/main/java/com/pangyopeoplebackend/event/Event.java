@@ -6,6 +6,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
@@ -17,6 +18,7 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Event {
     @Id
+    @Builder.Default
     private String eventId = UUID.randomUUID().toString();
 
     @Column(nullable = false)
@@ -26,22 +28,29 @@ public class Event {
     private String host;
 
     @Column(nullable = false)
-    private String eventDate;
+    private String startDate;
+
+    @Column(nullable = false)
+    private String endDate;
 
     @Column(nullable = false)
     private String eventUrl;
 
+    @Getter
     @Column(nullable = false)
     private boolean eventPermission;
 
     @Column(nullable = false)
+    private String imageUrl;
+
     @CreatedDate
-    private LocalDateTime eventCreated;
+    private String eventCreated;
 
     @PrePersist
     public void prePersist() {
         if (eventId == null) {
             eventId = UUID.randomUUID().toString();
         }
+        this.eventCreated = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }
