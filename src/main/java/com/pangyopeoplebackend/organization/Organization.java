@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
@@ -40,12 +41,13 @@ public class Organization {
 
     @Column(nullable = false)
     @CreatedDate
-    private LocalDateTime orgCreated;
+    private String orgCreated;
 
     @PrePersist
     public void prePersist() {
         if (orgId == null) {
             orgId = UUID.randomUUID().toString();
         }
+        this.orgCreated = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }
