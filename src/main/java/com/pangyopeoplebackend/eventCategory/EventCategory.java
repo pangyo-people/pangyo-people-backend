@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Setter
 @Builder
 @AllArgsConstructor
+@Table(name = "eventCategory")
 public class EventCategory{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
