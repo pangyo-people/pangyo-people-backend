@@ -3,6 +3,7 @@ package com.pangyopeoplebackend.eventCategory.service;
 import com.pangyopeoplebackend.category.Category;
 import com.pangyopeoplebackend.category.repository.CategoryRepository;
 import com.pangyopeoplebackend.event.Event;
+import com.pangyopeoplebackend.event.dto.EventDto;
 import com.pangyopeoplebackend.event.repository.EventRepository;
 import com.pangyopeoplebackend.eventCategory.EventCategory;
 import com.pangyopeoplebackend.eventCategory.repository.EventCategoryRepository;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,8 +37,29 @@ public class EventCategoryService {
         return eventCategoryRepository.findAll();
     }
 
-    public List<EventCategory> getEventCategoriesByEventId(String id) {
-        return eventCategoryRepository.findCategoryByEvent(id);
+    public List<Integer> getCategoryIdsByEventId(String id) {
+        return eventCategoryRepository.selectCategoryIdByEventId(id);
+    }
+
+    public EventDto getEventDtoFromEventCategory(EventCategory eventCategory) {
+
+        return new EventDto(eventCategory.getEvent().getEventId(), eventCategory.getEvent().getEventName(),
+                eventCategory.getEvent().getHost(), eventCategory.getEvent().getStartDate(),
+                eventCategory.getEvent().getEndDate(), eventCategory.getEvent().getEventUrl(),
+                eventCategory.getEvent().getImageUrl(), eventCategory.getEvent().isEventPermission(),
+                eventCategory.getEvent().getEventCreated(), getCategoryIdsByEventId(eventCategory.getEvent().getEventId()));
+    }
+
+    public List<EventDto> getEventDto(){
+        ArrayList<EventDto> events = new ArrayList<>();
+        for(EventCategory eventCategory: getEventCategories()){
+            events.add(getEventDtoFromEventCategory(eventCategory));
+        }
+        return events.stream().toList();
+    }
+
+    public EventCategory getEventCategory(Long eventCategoryId) {
+        return eventCategoryRepository.findByEventCategoryId(eventCategoryId);
     }
 
 }
