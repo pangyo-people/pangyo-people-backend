@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -58,8 +59,48 @@ public class EventCategoryService {
         return events.stream().toList();
     }
 
-    public EventCategory getEventCategory(Long eventCategoryId) {
+    public EventCategory getEventCategoryByEventCategoryId(Long eventCategoryId) {
         return eventCategoryRepository.findByEventCategoryId(eventCategoryId);
     }
+
+    @Transactional
+    public Event deleteEvent(String id){
+        Optional<Event> deleteEvent = eventRepository.findById(id);
+        List<EventCategory> deleteEventCategory = eventCategoryRepository.selectByEventId(id);
+
+        deleteEventCategory.removeIf(selectEventCategory -> {
+            eventCategoryRepository.delete(selectEventCategory);
+            return true;
+        });
+
+        deleteEvent.ifPresent(selectEvent->{
+            eventRepository.delete(selectEvent);
+        });
+
+        return deleteEvent.get();
+    }
+
+    /*@Transactional
+    public EventDto saveEventDto(EventDto eventDto) {
+
+        Event event = Event.builder()
+                .eventName(eventDto.getEventName())
+                .host(eventDto.getHost())
+                .eventUrl(eventDto.getEventUrl())
+                .imageUrl(eventDto.getImageUrl())
+                .startDate(eventDto.getStartDate())
+                .endDate(eventDto.getEndDate())
+                .eventPermission(false)
+                .build();
+        eventRepository.save(event);
+
+        for(Integer categoryId: eventDto.getCategories()){
+            eventCategoryRepository.save(EventCategory.builder()//.event(event)
+                    .eventCategoryId(Long.valueOf(categoryId))
+                    .build());
+        }
+
+        return eventDto;
+    }*/
 
 }
