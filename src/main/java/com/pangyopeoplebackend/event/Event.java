@@ -51,6 +51,9 @@ public class Event {
         if (eventId == null) {
             eventId = UUID.randomUUID().toString();
         }
+        if (eventCreated == null) {
+            this.eventCreated = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
         this.eventCreated = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }
