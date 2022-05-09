@@ -80,8 +80,8 @@ public class EventCategoryService {
         return deleteEvent.get();
     }
 
-    /*@Transactional
-    public EventDto saveEventDto(EventDto eventDto) {
+    @Transactional
+    public Event saveEventDto(EventDto eventDto) {
 
         Event event = Event.builder()
                 .eventName(eventDto.getEventName())
@@ -95,12 +95,13 @@ public class EventCategoryService {
         eventRepository.save(event);
 
         for(Integer categoryId: eventDto.getCategories()){
-            eventCategoryRepository.save(EventCategory.builder()//.event(event)
-                    .eventCategoryId(Long.valueOf(categoryId))
+            eventCategoryRepository.save(EventCategory.builder()
+                    .event(event)
+                    .category(categoryRepository.getById(categoryId))
                     .build());
         }
 
-        return eventDto;
-    }*/
+        return event;
+    }
 
 }
