@@ -2,6 +2,7 @@ package com.pangyopeoplebackend.eventCategory.controller;
 
 import com.pangyopeoplebackend.event.Event;
 import com.pangyopeoplebackend.event.dto.EventDto;
+import com.pangyopeoplebackend.event.service.EventService;
 import com.pangyopeoplebackend.eventCategory.service.EventCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 public class EventCategoryController {
 
     private final EventCategoryService eventCategoryService;
+    private final EventService eventService;
 
     @GetMapping(path = "/v1/api/events")
     public List<EventDto> getEvents(){
@@ -27,5 +29,15 @@ public class EventCategoryController {
     @DeleteMapping("/v1/api/admin/event/{id}")
     public Event deleteEvent(@PathVariable String id){
         return eventCategoryService.deleteEvent(id);
+    }
+
+    @PutMapping(path = "/v1/api/admin/event/{id}")
+    public boolean permitEvent(@PathVariable String id){
+        return eventService.permitEvent(id);
+    }
+
+    @GetMapping(path = "/v1/api/admin/events")
+    public List<EventDto> getAdminEvents(){
+        return eventCategoryService.getAdminEventDto();
     }
 }

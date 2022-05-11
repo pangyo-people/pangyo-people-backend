@@ -65,6 +65,17 @@ public class EventCategoryService {
         return events.stream().sorted(Comparator.comparing(EventDto::getEndDate)).toList();
     }
 
+    public List<EventDto> getAdminEventDto(){
+        ArrayList<EventDto> events = new ArrayList<>();
+        for(Event event : eventService.getEvents()){
+            if (!event.isEventPermission()) {
+                events.add(getEventDtoFromEvent(event));
+            }
+        }
+
+        return events.stream().sorted(Comparator.comparing(EventDto::getEndDate)).toList();
+    }
+
     public EventCategory getEventCategoryByEventCategoryId(Long eventCategoryId) {
         return eventCategoryRepository.findByEventCategoryId(eventCategoryId);
     }
