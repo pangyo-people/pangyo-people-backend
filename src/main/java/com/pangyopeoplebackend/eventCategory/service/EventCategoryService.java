@@ -96,7 +96,7 @@ public class EventCategoryService {
 
         for(Integer categoryId: eventDto.getCategories()){
             eventCategoryRepository.save(EventCategory.builder()
-                    .event(event)
+                    .event(eventRepository.getById(event.getEventId()))
                     .category(categoryRepository.getById(categoryId))
                     .build());
         }
