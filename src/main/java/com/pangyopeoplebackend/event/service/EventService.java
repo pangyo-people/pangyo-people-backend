@@ -15,7 +15,7 @@ public class EventService {
     private final EventRepository eventRepository;
 
     public List<Event> getEvents() {
-        return eventRepository.findAll(Sort.by(Sort.Direction.DESC, "eventDate"));
+        return eventRepository.findAll(Sort.by( "endDate"));
     }
 
     @Transactional
