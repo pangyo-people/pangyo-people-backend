@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,7 +57,7 @@ public class EventCategoryService {
         for(EventCategory eventCategory: getEventCategories()){
             events.add(getEventDtoFromEventCategory(eventCategory));
         }
-        return events.stream().toList();
+        return events.stream().sorted(Comparator.comparing(EventDto::getStartDate, Comparator.reverseOrder())).toList();
     }
 
     public EventCategory getEventCategoryByEventCategoryId(Long eventCategoryId) {
