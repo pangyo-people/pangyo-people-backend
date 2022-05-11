@@ -5,6 +5,7 @@ import com.pangyopeoplebackend.category.repository.CategoryRepository;
 import com.pangyopeoplebackend.event.Event;
 import com.pangyopeoplebackend.event.dto.EventDto;
 import com.pangyopeoplebackend.event.repository.EventRepository;
+import com.pangyopeoplebackend.event.service.EventService;
 import com.pangyopeoplebackend.eventCategory.EventCategory;
 import com.pangyopeoplebackend.eventCategory.repository.EventCategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class EventCategoryService {
     private final EventRepository eventRepository;
     private final CategoryRepository categoryRepository;
     private final EventCategoryRepository eventCategoryRepository;
+    private final EventService eventService;
 
     @Transactional
     public EventCategory save(Event event, Category category) {
@@ -43,21 +45,24 @@ public class EventCategoryService {
         return eventCategoryRepository.selectCategoryIdByEventId(id);
     }
 
-    public EventDto getEventDtoFromEventCategory(EventCategory eventCategory) {
+    public EventDto getEventDtoFromEvent(Event event) {
 
-        return new EventDto(eventCategory.getEvent().getEventId(), eventCategory.getEvent().getEventName(),
-                eventCategory.getEvent().getHost(), eventCategory.getEvent().getStartDate(),
-                eventCategory.getEvent().getEndDate(), eventCategory.getEvent().getEventUrl(),
-                eventCategory.getEvent().getImageUrl(), eventCategory.getEvent().isEventPermission(),
-                eventCategory.getEvent().getEventCreated(), getCategoryIdsByEventId(eventCategory.getEvent().getEventId()));
+        return new EventDto(event.getEventId(), event.getEventName(),
+                event.getHost(), event.getStartDate(),
+                event.getEndDate(), event.getEventUrl(),
+                event.getImageUrl(), event.isEventPermission(),
+                event.getEventCreated(), getCategoryIdsByEventId(event.getEventId()));
     }
 
     public List<EventDto> getEventDto(){
         ArrayList<EventDto> events = new ArrayList<>();
-        for(EventCategory eventCategory: getEventCategories()){
-            events.add(getEventDtoFromEventCategory(eventCategory));
+        for(Event event : eventService.getEvents()){
+            if (event.isEventPermission()) {
+                events.add(getEventDtoFromEvent(event));
+            }
         }
-        return events.stream().sorted(Comparator.comparing(EventDto::getStartDate, Comparator.reverseOrder())).toList();
+
+        return events.stream().sorted(Comparator.comparing(EventDto::getEndDate)).toList();
     }
 
     public EventCategory getEventCategoryByEventCategoryId(Long eventCategoryId) {
