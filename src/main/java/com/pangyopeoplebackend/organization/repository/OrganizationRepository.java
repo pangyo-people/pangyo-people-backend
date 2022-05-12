@@ -9,5 +9,7 @@ import java.util.List;
 
 @Repository
 public interface OrganizationRepository extends JpaRepository<Organization, String>{
-    List<Organization> findByOrgCategoryOrderByOrgName(OrgCategory orgCategory);
+    List<Organization> findByOrgCategoryAndOrgPermissionOrderByOrgName(OrgCategory orgCategory, boolean orgPermission);
+
+    List<Organization> findAllByOrgPermissionOrderByOrgName(boolean orgPermission);
 }
