@@ -1,12 +1,12 @@
-name: build(dev)
+name: build test(dev)
 
 on:  
   pull_request:
     branches: [develop-deploy, main]
 
 jobs:
-  dev_build:
-    name: build dev code
+  build:
+    name: api server build test
     runs-on: ubuntu-latest
 
     steps:

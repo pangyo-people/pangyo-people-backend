@@ -5,8 +5,8 @@ on:
     branches: [ develop-deploy ]
 
 jobs:
-  deploy:
-    name: Deploy Dev
+  deploy_dev:
+    name: deploy dev api server
     runs-on: ubuntu-latest
 
     steps:
