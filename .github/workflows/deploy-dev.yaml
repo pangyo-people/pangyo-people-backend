@@ -2,7 +2,7 @@ name: build and deploy(dev)
 
 on:
   push:
-    branches: [ develop-deploy ]
+    branches: [ deploy-dev ]
 
 jobs:
   deploy_dev:
