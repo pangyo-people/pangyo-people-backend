@@ -11,5 +11,5 @@ import java.util.List;
 public interface OrganizationRepository extends JpaRepository<Organization, String>{
     List<Organization> findByOrgCategoryAndOrgPermissionOrderByOrgName(OrgCategory orgCategory, boolean orgPermission);
 
-    List<Organization> findAllByOrgPermissionOrderByOrgName(boolean orgPermission);
+    List<Organization> findAllByOrgPermissionOrderByOrgCreatedAsc(boolean orgPermission);
 }
