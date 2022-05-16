@@ -16,7 +16,7 @@ public class OrganizationService {
     private final OrganizationRepository organizationRepository;
 
     public List<Organization> getOrganizations() {
-        return organizationRepository.findAllByOrgPermissionOrderByOrgName(false);
+        return organizationRepository.findAllByOrgPermissionOrderByOrgCreatedAsc(false);
     }
 
     public List<Organization> getOrganizationsByOrgCategory(OrgCategory orgCategory) {
