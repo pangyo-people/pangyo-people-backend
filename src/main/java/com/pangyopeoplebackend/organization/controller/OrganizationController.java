@@ -25,11 +25,11 @@ public class OrganizationController {
         return organizationService.getOrganizations();
     }
 
-    @PutMapping("/v1/api/admin/orgs/{id}")
+    @PutMapping("/v1/api/admin/org/{id}")
     public Optional<Organization> updateOrganization(@PathVariable String id){
         return organizationService.updateOrganization(id);
     }
-    @DeleteMapping("/v1/api/admin/orgs/{id}")
+    @DeleteMapping("/v1/api/admin/org/{id}")
     public Organization deleteOrganization(@PathVariable String id){
         return organizationService.deleteOrganization(id);
     }
