@@ -3,6 +3,7 @@ package com.pangyopeoplebackend.event;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.pangyopeoplebackend.domain.DateToStringConverter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,9 +30,11 @@ public class Event {
     private String host;
 
     @Column(nullable = false)
+    @Convert(converter=DateToStringConverter.class)
     private String startDate;
 
     @Column(nullable = false)
+    @Convert(converter=DateToStringConverter.class)
     private String endDate;
 
     @Column(nullable = false)
