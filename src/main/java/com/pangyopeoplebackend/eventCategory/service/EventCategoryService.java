@@ -104,7 +104,7 @@ public class EventCategoryService {
                 .eventName(eventDto.getEventName())
                 .host(eventDto.getHost())
                 .eventUrl(eventDto.getEventUrl())
-                .imageUrl("s3-pgpp-etc-001.s3.ap-northeast-2.amazonaws.com/character.png")
+                .imageUrl("http://s3-pgpp-etc-001.s3.ap-northeast-2.amazonaws.com/character.png")
                 //.imageUrl(eventDto.getImageUrl()"s3-pgpp-etc-001.s3.ap-northeast-2.amazonaws.com/character.png")
                 .startDate(eventDto.getStartDate())
                 .endDate(eventDto.getEndDate())
