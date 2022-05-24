@@ -19,8 +19,7 @@ public class EventCategoryController {
     private final EventService eventService;
 
     @GetMapping(path = "/v1/api/events")
-    public List<EventDto> getEvents() throws Throwable {
-        categoryService.save();
+    public List<EventDto> getEvents() {
         return eventCategoryService.getEventDto();
     }
 
