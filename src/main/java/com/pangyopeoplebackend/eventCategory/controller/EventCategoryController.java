@@ -1,5 +1,6 @@
 package com.pangyopeoplebackend.eventCategory.controller;
 
+import com.pangyopeoplebackend.category.service.CategoryService;
 import com.pangyopeoplebackend.event.Event;
 import com.pangyopeoplebackend.event.dto.EventDto;
 import com.pangyopeoplebackend.event.service.EventService;
@@ -14,10 +15,12 @@ import java.util.List;
 public class EventCategoryController {
 
     private final EventCategoryService eventCategoryService;
+    private final CategoryService categoryService;
     private final EventService eventService;
 
     @GetMapping(path = "/v1/api/events")
-    public List<EventDto> getEvents(){
+    public List<EventDto> getEvents() throws Throwable {
+        categoryService.save();
         return eventCategoryService.getEventDto();
     }
 

@@ -15,7 +15,7 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     @Transactional
-    void save() throws Throwable {
+    public void save() throws Throwable {
         Category category1 = Category.builder()
                 .categoryId(0)
                 .categoryName("모바일")
@@ -76,18 +76,18 @@ public class CategoryService {
                 .categoryName("해커톤")
                 .build();
 
-        category1 = categoryRepository.save(category1);
-        category2 = categoryRepository.save(category2);
-        category3 = categoryRepository.save(category3);
-        category4 = categoryRepository.save(category4);
-        category5 = categoryRepository.save(category5);
-        category6 = categoryRepository.save(category6);
-        category7 = categoryRepository.save(category7);
-        category8 = categoryRepository.save(category8);
-        category9 = categoryRepository.save(category9);
-        category10 = categoryRepository.save(category10);
-        category11 = categoryRepository.save(category11);
-        category12 = categoryRepository.save(category12);
+        categoryRepository.save(category1);
+        categoryRepository.save(category2);
+        categoryRepository.save(category3);
+        categoryRepository.save(category4);
+        categoryRepository.save(category5);
+        categoryRepository.save(category6);
+        categoryRepository.save(category7);
+        categoryRepository.save(category8);
+        categoryRepository.save(category9);
+        categoryRepository.save(category10);
+        categoryRepository.save(category11);
+        categoryRepository.save(category12);
 
     }
 }
