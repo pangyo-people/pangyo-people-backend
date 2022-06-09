@@ -23,6 +23,11 @@ public class EventCategoryController {
         return eventCategoryService.getEventDto();
     }
 
+    @GetMapping("/v1/api/categories")
+    public void saveCategories() throws Throwable {
+        categoryService.save();
+    }
+
     @PostMapping("/v1/api/event/write")
     public Event saveEvent(@RequestBody EventDto eventDto) {
         return eventCategoryService.saveEventDto(eventDto);
