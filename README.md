@@ -19,8 +19,8 @@
 ## 구성원 👨‍👩‍👧‍👧
 
 |  [박인효](https://github.com/PARKINHYO)  |  [안윤빈](https://github.com/Ayoon-b)  |  [양현용](https://github.com/YangHyunYong)  |
-| :----------: |  :--------:  |  :---------: |  :---------: |  :---------: |  :---------: |
-| <img src="" width=400px alt=""/> | <img src="" width=400px alt=""/> | <img src="" width=400px alt=""> |
+| :----------: |  :--------:  |  :---------: |
+| <img src="https://user-images.githubusercontent.com/58851760/174080107-901b0567-1e70-4e1c-9504-252741b6d6dc.png" width=400px alt=""/> | <img src="https://user-images.githubusercontent.com/58851760/174079739-f6639bf7-398b-4f17-b670-a61a9642a146.png" width=400px alt=""/> | <img src="https://user-images.githubusercontent.com/58851760/174080315-cc86cf3b-9888-4470-b919-b0f04e731573.png" width=400px alt=""> |
 |인프라 담당✨|백엔드 담당🎢 |프론트엔드 담당🎢|
 <br>
 
