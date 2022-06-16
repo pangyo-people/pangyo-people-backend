@@ -14,6 +14,10 @@
 
 ## 💻 판교피플
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/58851760/174082153-683def81-bc15-4efd-84e2-96df3073d859.png" width=600px>
+</p>
+
 * [about 판교피플](https://www.notion.so/ihp001/e03355339e614cb88bd601d6a7fed2e4)
   <br>
 
