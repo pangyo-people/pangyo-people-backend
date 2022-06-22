@@ -40,3 +40,26 @@
 <p align="center">
 <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=for-the-badge&logo=Amazon AWS&logoColor=white"> <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"> 
 </p>
+
+## 📲 실행 화면
+<strong> [ 메인  화면 ]</strong>
+<p>
+    <img src="https://user-images.githubusercontent.com/58851760/174962336-78166fc3-a12c-4272-a384-f4f97c9c4ee4.JPG" width=1000px>
+    <img src="https://user-images.githubusercontent.com/58851760/174963018-640bf50b-098d-4a24-8897-1806adad8e6b.JPG" width=1000px>
+</p>
+
+<strong> [ Archive  화면 ]</strong>
+<p>
+    <img src="https://user-images.githubusercontent.com/58851760/174963518-73b94bf4-51ec-4d92-891a-78dbf93c0b40.JPG" width=1000px>
+</p>
+
+<strong> [ 게시글 추가 ]</strong>
+<p>
+    <img src="https://user-images.githubusercontent.com/58851760/174963774-2527b985-2599-404d-8b0d-c9eabb65fec9.JPG" width=1000px>
+    <img src="https://user-images.githubusercontent.com/58851760/174963786-1521e9f1-2b00-4fe0-9c47-ffd582be4006.JPG" width=1000px>
+</p>
+
+<strong> [ 이벤트 검색 ]</strong>
+<p>
+    <img src="https://user-images.githubusercontent.com/58851760/174964012-52947efb-7cc6-4cb3-9394-da90668632e2.JPG" width=1000px>
+</p>
